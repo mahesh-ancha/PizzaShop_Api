@@ -11,7 +11,7 @@ using PizzaShop_Api.Data;
 namespace PizzaShop_Api.Migrations
 {
     [DbContext(typeof(PizzaShop_DBContext))]
-    [Migration("20220926101211_Initial Migration")]
+    [Migration("20220929103922_Initial Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,28 @@ namespace PizzaShop_Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("PizzaShop_Api.Model.login", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Login");
                 });
 #pragma warning restore 612, 618
         }

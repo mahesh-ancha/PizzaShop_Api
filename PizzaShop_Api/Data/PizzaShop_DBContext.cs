@@ -10,6 +10,7 @@ namespace PizzaShop_Api.Data
 
         }
         public DbSet<Cart> Cart { get; set; }
+        public DbSet<login> Login { get; set; }
 
     }
 }
