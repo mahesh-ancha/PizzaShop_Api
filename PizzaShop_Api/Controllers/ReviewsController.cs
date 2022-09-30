@@ -7,25 +7,25 @@ namespace PizzaShop_Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController : Controller
+    public class ReviewsController : Controller
     {
         private readonly PizzaShop_DBContext _pizzashop_DBContext;
-        public OrdersController(PizzaShop_DBContext pizzaShop_DBContext)
+        public ReviewsController(PizzaShop_DBContext pizzaShop_DBContext)
         {
             _pizzashop_DBContext = pizzaShop_DBContext;
         }
         [HttpGet]
-        public async Task<IActionResult> GetOrders()
+        public async Task<IActionResult> GetReviews()
         {
-            var orderitem = await _pizzashop_DBContext.order.ToListAsync();
-            return Ok(orderitem);
+            var reviewitem = await _pizzashop_DBContext.reviews.ToListAsync();
+            return Ok(reviewitem);
         }
         [HttpPost]
-        public async Task<IActionResult> AddOrder([FromBody] order orderrequest)
+        public async Task<IActionResult> AddReview([FromBody] reviews reviewrequest)
         {
-            await _pizzashop_DBContext.order.AddAsync(orderrequest);
+            await _pizzashop_DBContext.reviews.AddAsync(reviewrequest);
             await _pizzashop_DBContext.SaveChangesAsync();
-            return Ok(orderrequest);
+            return Ok(reviewrequest);
         }
     }
 }
